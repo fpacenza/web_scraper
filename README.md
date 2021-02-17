@@ -49,4 +49,4 @@ It is suggested to create an additional gmail account to be used as sender accou
  - `Type your the password for your gmail sender account`
  - press `enter`
 
- Note that the password will be visible in your console but will be used a crypted `ssl` connection when the script will sent the email, so the password **will be hodden** to the web. 
+ Note that the password will be visible in your console but will be used a crypted `ssl` connection when the script will sent the email, so the password **will be hidden** to the web. 
