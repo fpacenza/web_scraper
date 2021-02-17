@@ -1,8 +1,8 @@
-[![GitHub license](https://img.shields.io/badge/license-gpl-blue.svg)](https://raw.githubusercontent.com/fpacenza/web_scalper/main/LICENSE?token=AE7JDJALMZIYKRWFJPKRREDAGBLEQ)
-<!-- [![GitHub release](https://img.shields.io/github/release/fpacenza/web_scalper.svg)](https://github.com/fpacenza/web_scalper/releases/latest) -->
-<!-- [![GitHub issues](https://img.shields.io/github/issues/fpacenza/web_scalper.svg)](https://github.com/fpacenza/web_scalper/issues) -->
+[![GitHub license](https://img.shields.io/badge/license-gpl-blue.svg)](https://raw.githubusercontent.com/fpacenza/web_scraper/main/LICENSE?token=AE7JDJALMZIYKRWFJPKRREDAGBLEQ)
+<!-- [![GitHub release](https://img.shields.io/github/release/fpacenza/web_scraper.svg)](https://github.com/fpacenza/web_scraper/releases/latest) -->
+<!-- [![GitHub issues](https://img.shields.io/github/issues/fpacenza/web_scraper.svg)](https://github.com/fpacenza/web_scraper/issues) -->
 
-# A web scalper tool for finding product availability on the web
+# A web scraper tool for finding product availability on the web
 
 A useful tool to find availability of products on the web
 
