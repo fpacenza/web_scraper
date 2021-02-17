@@ -6,7 +6,7 @@
 
 A useful tool to find availability of products on the web
 # Release for win64 available
-Windows 64bit - [Download](https://github.com/fpacenza/web_scraper/releases/tag/v1.0.0)
+**Windows 64bit** - [Download](https://github.com/fpacenza/web_scraper/releases/download/v1.0.0/win64.zip)
 
 # Set up
 ## Requirements
