@@ -7,7 +7,6 @@ from datetime import datetime
 from threading import Thread
 from multiprocessing.pool import ThreadPool
 
-
 class color:
     PURPLE = '\033[95m'
     CYAN = '\033[96m'
@@ -20,24 +19,9 @@ class color:
     UNDERLINE = '\033[4m'
     END = '\033[0m'
 
-amazon_link_standard_ita = "https://www.amazon.it/dp/B08KKJ37F7/ref=sxts_spkl_2_0_07b25a9a-1f5d-4493-96dd-716b3478304c?pd_rd_w=RtPZX&pf_rd_p=07b25a9a-1f5d-4493-96dd-716b3478304c&pf_rd_r=V8SM9HBNQXTAGYND9MMJ&pd_rd_r=6955e45a-08e8-4f5a-b6e6-dbfee383857c&pd_rd_wg=IFwx3&qid=1611686866"
-amazon_link_digital_ita = "https://www.amazon.it/Sony-PlayStation-5-Digital-Edition/dp/B08KJF2D25/ref=sr_1_1?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=ps5+console&qid=1611515471&s=videogames&sr=1-1"
-amazon_link_standard_es = "https://www.amazon.es/dp/B08KKJ37F7/ref=sxts_spkl_2_1_19702538-81b7-4e26-8a68-a475cc66898a?pf_rd_p=19702538-81b7-4e26-8a68-a475cc66898a&pf_rd_r=S9R83MV42T0S1FFWBZHA&pd_rd_wg=wfqb6&pd_rd_w=SP3Nh&qid=1612558396&pd_rd_r=91ddc19f-cdc1-4d47-9040-23f0816650a2"
-amazon_link_standard_uk = "https://www.amazon.co.uk/PlayStation-9395003-5-Console/dp/B08H95Y452/ref=sr_1_1?dchild=1&keywords=ps5&qid=1612559440&sr=8-1&th=1"
-amazon_link_standard_nl = "https://www.amazon.nl/Sony-PlayStation-PlayStation%C2%AE5-Console/dp/B08H93ZRK9/ref=sr_1_2?dchild=1&pd_rd_r=117cb213-33b5-4630-903d-923790a8d6d9&pd_rd_w=jK8Sv&pd_rd_wg=gqFTP&pf_rd_p=77407219-c937-4a14-85ff-6ad2a54ebbc8&pf_rd_r=045CBSP1C0J1XE2Q006Z&qid=1612559576&s=videogames&sr=1-2"
-amazon_link_digital_nl = "https://www.amazon.nl/Sony-PlayStation-PlayStation%C2%AE5-Console/dp/B08H98GVK8/ref=sr_1_2?dchild=1&pd_rd_r=117cb213-33b5-4630-903d-923790a8d6d9&pd_rd_w=jK8Sv&pd_rd_wg=gqFTP&pf_rd_p=77407219-c937-4a14-85ff-6ad2a54ebbc8&pf_rd_r=045CBSP1C0J1XE2Q006Z&qid=1612559576&s=videogames&sr=1-2&th=1"
 
-amazon_link_standard_2 = "https://www.amazon.it/Playstation-Sony-PlayStation-5/dp/B08KKJ37F7/ref=sr_1_2?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=ps5+console&qid=1611602689&s=videogames&sr=1-2"
-amazon_link_digital_2 = "https://www.amazon.it/Sony-PlayStation-5-Digital-Edition/dp/B08KJF2D25/ref=sr_1_1?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=ps5+console+digitale&qid=1611602805&s=videogames&sr=1-1"
-unieuro_link_standard = "https://www.unieuro.it/online/Playstation-5/PlayStation-5-pidSONPS5DISC"
-unieuro_link_digital = "https://www.unieuro.it/online/Playstation-5/PlayStation-5-Digital-Edition-pidSONPS5DIGITAL"
-gamestop_link_standard = "https://www.gamestop.it/PS5/Games/131468"
-gamestop_link_digital = "https://www.gamestop.it/PS5/Games/131469/playstation-5-digital-edition"
-euronics_link_standard = "https://www.euronics.it/console/sony-computer/playstation-5/eProd202008906/"
-euronics_link_digital = "https://www.euronics.it/siem/console/sony-computer/playstation-5-digital-edition/eProd202008907/"
-euronics_link_digital_2 = "https://www.euronics.it/console/sony-computer/playstation-5-digital-edition/eProd202008907/"
-mediaworld_link_standard = "https://www.mediaworld.it/product/i-147513"
-
+with open('config.txt', newline='') as f:
+    websites = f.readlines()
 
 isNotAvailable = ["Non disponibile", "display: block;", "Disponibile presso questi venditori", "No disponible", "Currently unavailable", "Momenteel niet verkrijgbaar", "Disponible a través de estos vendedores"]
 headers = {
@@ -107,34 +91,15 @@ def log_result(result):
     result_list.append(result)
 
 def check_ps5(colored: bool):
-#    check_web_site(mediaworld_link_standard, "Mediaworld Standard Edition", colored)
     pool = ThreadPool(processes=6)
 
-    pool.apply_async(check_web_site, args = (amazon_link_standard_ita, "Amazon ITA Standard Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (amazon_link_digital_ita, "Amazon ITA Digital Edition", colored, ), callback = log_result)
-#    pool.apply_async(check_web_site, args = (amazon_link_standard_es, "Amazon ES Standard Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (amazon_link_standard_uk, "Amazon UK Standard Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (amazon_link_standard_nl, "Amazon NL Standard Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (amazon_link_digital_nl, "Amazon NL Digital Edition", colored, ), callback = log_result)
+    for line in websites:
+        (site, link) = line.split(",")
+        pool.apply_async(check_web_site, args = (link.strip(), site, colored, ), callback = log_result)
 
-    pool.apply_async(check_web_site, args = (unieuro_link_standard, "Unieuro Standard Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (unieuro_link_digital, "Unieuro Digital Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (gamestop_link_standard, "GameStop Standard Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (gamestop_link_digital, "GameStop Digital Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (euronics_link_standard, "Euronics Standard Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (euronics_link_digital, "Euronics Digital Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (euronics_link_digital_2, "Euronics Digital Edition", colored, ), callback = log_result)
-    pool.apply_async(check_web_site, args = (mediaworld_link_standard, "Mediaworld Standard Edition", colored, ), callback = log_result)
 
     pool.close()
     pool.join()
     return result_list
 
-
-# DEBUG ONLY
-#while 1:
-#    check_web_site(mediaworld_link_standard, "Mediaworld Standard Edition", True)
-#    check_ps5(True)
-#    print(result_list)
-#    result_list.clear()
 

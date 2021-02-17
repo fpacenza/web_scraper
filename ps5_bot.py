@@ -7,13 +7,13 @@ import smtplib, ssl
 
 port = 587  # For starttls
 smtp_server = "smtp.gmail.com"
-sender_email = "sender_email@gmail.com"
-receiver_email = "receiver_email@gmail.com"
+sender_email = input("Type your GMAIL SENDER account and press enter:")
+receiver_email = input("Type your GMAIL RECEIVER account and press enter:")
 password = input("Type your password and press enter:")
 message = """\
-Subject: PlayStation 5 Availability
+Subject: Disponibile PlayStation 5
 
-PlayStation 5 IS NOW AVAILABLE"""
+PlayStation 5 disponibile"""
 
 
 while 1:
@@ -28,7 +28,7 @@ while 1:
                 print(result[2])
                 server.login(sender_email, password)
                 message = """\
-Subject: PlayStation 5 Availability
+Subject: Disponibile PlayStation 5
 
 """ + str(result[2])
                 server.sendmail(sender_email, receiver_email, message)
