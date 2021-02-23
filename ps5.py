@@ -1,4 +1,4 @@
-#!/usr/bin/pythn3
+#!/usr/bin/python3
 
 import urllib3
 from bs4 import BeautifulSoup
