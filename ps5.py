@@ -20,9 +20,6 @@ class color:
     END = '\033[0m'
 
 
-with open('config.txt', newline='') as f:
-    websites = f.readlines()
-
 isNotAvailable = ["Non disponibile", "display: block;", "Disponibile presso questi venditori", "No disponible", "Currently unavailable", "Momenteel niet verkrijgbaar", "Disponible a través de estos vendedores"]
 headers = {
     'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -91,15 +88,13 @@ def log_result(result):
     result_list.append(result)
 
 def check_ps5(colored: bool):
-    pool = ThreadPool(processes=6)
+    with open('config.txt', newline='') as f:
+        websites = f.readlines()
 
+    pool = ThreadPool(processes=6)
     for line in websites:
         (site, link) = line.split(",")
         pool.apply_async(check_web_site, args = (link.strip(), site, colored, ), callback = log_result)
-
-
     pool.close()
     pool.join()
     return result_list
-
-
