@@ -48,7 +48,9 @@ It is suggested to create an additional gmail account to be used as sender accou
 
 ## Execute the script
  - `python3 ps5_bot.py`
- - `Type your the password for your gmail sender account`
+ - `Type your gmail sender account`
+ - `Type the email address where you want to receive a notification`
+ - `Type the password for your gmail sender account`
  - press `enter`
 
- Note that the password will be visible in your console but will be used a crypted `ssl` connection when the script will sent the email, so the password **will be hidden** to the web. 
+ Note that the password will be visible in your console but will be used a crypted `ssl` connection when the script will send the email, so the password **will be hidden** to the web. 
