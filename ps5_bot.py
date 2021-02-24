@@ -7,9 +7,9 @@ import smtplib, ssl
 
 port = 587  # For starttls
 smtp_server = "smtp.gmail.com"
-sender_email = input("Type your GMAIL SENDER account and press enter:")
-receiver_email = input("Type your GMAIL RECEIVER account and press enter:")
-password = input("Type your password and press enter:")
+sender_email = input("GMAIL SENDER account and press enter:")
+receiver_email = input("Type your email address and press enter:")
+password = input("Type your password for the GMAIL SENDER account and press enter:")
 message = """\
 Subject: Disponibile PlayStation 5
 
